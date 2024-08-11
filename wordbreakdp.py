@@ -14,16 +14,15 @@ Output: True
 Input: s = "applepenapple", wordDict = ["apple", "pen"]
 Output: True
 
-Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"
-Output: False]
+Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
+Output: False
 '''
-
-
+#s = "leetcode"    wordDict = ["leet", "code"]
+#dp = [[0], [0], [0], [0], [0], [0], [0], [0]]
 def wordbreak(s, wordDict):
     dp = [[0]] * len(s)
     for i in range(len(s)):
-        for word in wordDict:
-            for j in range(len(dp[i])):
-                if word == s[dp[i][j]:i + 1]:
-                    dp[i].append(i + 1)
+        for j in range(len(dp[i])):
+            if s[dp[i][j]:i + 1] in wordDict:
+                dp[i].append(i + 1)
     return dp[-1][-1] == len(s)
