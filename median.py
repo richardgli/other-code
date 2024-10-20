@@ -1,6 +1,6 @@
 '''
 The median is the middle value in an ordered integer list. If the size of the list is even,
-there is no middle value, and the median is hte mean of the two middle values.
+there is no middle value, and the median is the mean of the two middle values.
 
 addNum() adds the integer num from the data stream to the data structure.
 findMedian() returns the median of all elements so far. Answers within 10^-5 of the actual answer
