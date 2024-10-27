@@ -7,6 +7,7 @@ If the door was not used in the previous second, then the person who wants to ex
 If the door was used in the previous second for entering, the person who wants to enter goes first.
 If the door was used in the previous second for exiting, the person who wants to exit goes first.
 If multiple persons want to go in the same direction, the person with the smallest index goes first.
+Return an array of size n where answer[i] is the second at which the ith person crosses the door
 
 Only one person can cross the door at each second.
 A person may arrive at the door and wait without entering or exiting to follow the mentioned rules.
