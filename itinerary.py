@@ -21,7 +21,7 @@ fromi and toi consist of uppercase English letters.
 fromi != toi 
 """
 
-// Somewhat functioning
+# Somewhat functioning
 d = {}
 tickets = [["MUC","LHR"],["JFK","MUC"],["SFO","SJC"],["LHR","SFO"]]
 out = [None] * len(tickets)
