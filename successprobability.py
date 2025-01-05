@@ -20,24 +20,28 @@ def findSuccessProbability(n, edges, succProb, start, end):
     adj_list = defaultdict(list)
 
     for i in range(n):
-        target = edges[i][0]
-        node = edges[i][1]
-        adj_list[target].append((succProb[i], node))
+        node1 = edges[i][0]
+        node2 = edges[i][1]
+        adj_list[node1].append((succProb[i], node2))
+        adj_list[node2].append((succProb[i], node1))
 
-    heap = [[0, start]]
+    heap = [(-1, start)]
     heapq.heapify(heap)
-    visited = set()
+    max_prob = [0] * n
+    max_prob[start] = 1
+
     while heap:
         probability, node = heapq.heappop(heap)
-        visited.add(node)
 
-        if end in visited:
+        if node == end:
             return probability
-
-        for prob, adj_node in adj_list[node]:
-            if adj_node not in visited:
-                heapq.heappush(heap, (probability * prob, adj_node))
-    return probability
+        
+        if adj_list[node]:
+            for prob, adj_node in adj_list[node]:
+                if probability * prob > max_prob[adj_node]:
+                    max_prob[adj_node] = -probability * prob
+                    heapq.heappush(heap, (-max_prob[adj_node], adj_node))
+    return 0
 
     
 
