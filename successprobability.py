@@ -42,8 +42,3 @@ def findSuccessProbability(n, edges, succProb, start, end):
                     maxProb[adjNode] = -probability * prob
                     heapq.heappush(heap, (-maxProb[adjNode], adjNode))
     return 0
-
-    
-
-
-    
