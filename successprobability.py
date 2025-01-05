@@ -17,18 +17,18 @@ from collections import defaultdict
 import heapq
 
 def findSuccessProbability(n, edges, succProb, start, end):
-    adj_list = defaultdict(list)
+    adjList = defaultdict(list)
 
     for i in range(n):
         node1 = edges[i][0]
         node2 = edges[i][1]
-        adj_list[node1].append((succProb[i], node2))
-        adj_list[node2].append((succProb[i], node1))
+        adjList[node1].append((succProb[i], node2))
+        adjList[node2].append((succProb[i], node1))
 
     heap = [(-1, start)]
     heapq.heapify(heap)
-    max_prob = [0] * n
-    max_prob[start] = 1
+    maxProb = [0] * n
+    maxProb[start] = 1
 
     while heap:
         probability, node = heapq.heappop(heap)
@@ -37,10 +37,10 @@ def findSuccessProbability(n, edges, succProb, start, end):
             return probability
         
         if adj_list[node]:
-            for prob, adj_node in adj_list[node]:
-                if probability * prob > max_prob[adj_node]:
-                    max_prob[adj_node] = -probability * prob
-                    heapq.heappush(heap, (-max_prob[adj_node], adj_node))
+            for prob, adjNode in adj_list[node]:
+                if probability * prob > maxProb[adjNode]:
+                    maxProb[adjNode] = -probability * prob
+                    heapq.heappush(heap, (-maxProb[adjNode], adjNode))
     return 0
 
     
