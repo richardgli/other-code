@@ -33,17 +33,13 @@ def cheapestPrice(n, flights, src, dst, k):
     minPrice = ['inf'] * n
     minPrice[src] = 0
     numStops = [-1] * n
-    
+
     for j in range(n - 1):
         changed = False
         for i in range(n):
-            if adjList[i] and minPrice[i] != 'inf':
+            if adjList[i] and minPrice[i] != 'inf' and numStops[i] < k:
                 for toCity, price in adjList[i]:
-                    if minPrice[toCity] == 'inf' and minPrice[i] != 'inf':
-                        minPrice[toCity] = price + minPrice[i]                  
-                        numStops[toCity] += 1
-                        changed = True
-                    elif ((price + minPrice[i]) < minPrice[toCity]) and (numStops[i] < k):
+                    if minPrice[toCity] == 'inf' or (price + minPrice[i] < minPrice[toCity]):
                         minPrice[toCity] = price + minPrice[i]                  
                         numStops[toCity] += 1
                         changed = True
